@@ -19,8 +19,18 @@ jobs:
         with:
           node-version: 20
 
+      - name: Cache Yarn dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          yarn install --frozen-lockfile
+          yarn add --dev @testing-library/react @testing-library/jest-dom @testing-library/dom
 
       - name: Run Tests
         run: yarn test --watchAll=false
@@ -58,4 +68,3 @@ jobs:
             --tag $REPO_URI:$VERSION \
             --tag $REPO_URI:latest \
             --push .
-
