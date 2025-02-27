@@ -50,7 +50,7 @@ jobs:
 
       - name: Build and Push Multi-Arch Docker Image
         env:
-          REPO_URI: your-aws-account-id.dkr.ecr.us-east-1.amazonaws.com/supreme-showcase-frontend
+          REPO_URI: 428300362017.dkr.ecr.us-east-1.amazonaws.com/supreme-showcase-frontend
         run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
