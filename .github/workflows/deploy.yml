@@ -2,7 +2,7 @@ name: Deploy React Frontend to ECR
 
 on:
   schedule:
-    - cron: '20 23 * * *'
+    - cron: '40 23 * * *'
   push:
     branches:
       - main
